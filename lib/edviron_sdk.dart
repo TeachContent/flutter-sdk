@@ -29,17 +29,17 @@ class Edviron extends StatelessWidget{
   }) {
     controller.setNavigationDelegate(NavigationDelegate(
     onNavigationRequest: (request) {
-      if(request.url.contains('pg.edviron.com/payment-success')) {
+      if(request.url.contains('pg.edviron.in/payment-success')) {
         onSuccess();
         Navigator.of(context).pop();
-      } else if(request.url.contains('pg.edviron.com/payment-failure')) {
+      } else if(request.url.contains('pg.edviron.in/payment-failure')) {
         onError();
         Navigator.of(context).pop();
       }
       return NavigationDecision.navigate;
     }));
     String prefix = mode == EdvironMode.production ? 'pg' : 'dev.pg';
-    controller.loadRequest(Uri.parse('https://$prefix.edviron.com/collect-sdk-payments?collect_id=$collectRequestId'));
+    controller.loadRequest(Uri.parse('https://$prefix.edviron.in/collect-sdk-payments?collect_id=$collectRequestId'));
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => Scaffold(
         appBar: AppBar(
